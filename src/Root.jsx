@@ -1,8 +1,9 @@
+import { Outlet } from "react-router-dom";
 
 const Root = () => {
     return (
         <div>
-            I am from root
+            <Outlet></Outlet>
         </div>
     );
 };
