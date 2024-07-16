@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { FaPhoneFlip } from "react-icons/fa6";
 import { MdEmail, MdOutlineDriveFileRenameOutline, MdOutlineFiberPin } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAxiosPublic from "./hooks/UseAxiosPublic";
+import Swal from "sweetalert2";
 
 const Register = () => {
 
-    const [error, setError] = useState('')
+    const [error, setError] = useState('');
+    const axiosPublic= useAxiosPublic();
+    const navigate = useNavigate();
 
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -25,9 +29,27 @@ const Register = () => {
             number,
             pin
         }
-        setError('')
+        setError('');
 
-        console.log(newAccount);
+
+       axiosPublic.post('/user', newAccount)
+       .then(data=>{
+        console.log(data);
+        if(data.data.insertedId)
+        {
+            navigate('/home');
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Sign Up Successfull",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+       })
+
+       
 
 
     }

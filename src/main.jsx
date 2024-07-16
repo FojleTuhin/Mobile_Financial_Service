@@ -9,6 +9,8 @@ import {
 import Root from './Root';
 import Login from './Login';
 import Register from './Register';
+import Home from './home/Home';
+
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element:<Register></Register>
+      },
+      {
+        path:'/home',
+        element:<Home></Home>
       }
     ]
   },
