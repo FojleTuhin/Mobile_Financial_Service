@@ -17,7 +17,7 @@ const Register = () => {
         const name = e.target.name.value;
         const email = e.target.email.value;
         const number = e.target.number.value;
-        const role= e.target.role.value;
+        const role = e.target.role.value;
         const pin = e.target.pin.value;
         if (!/^\d{5}$/.test(pin)) {
             setError('Password must be 5 digit')
@@ -50,6 +50,14 @@ const Register = () => {
                         timer: 1500
                     });
                 }
+
+                axiosPublic.post('/jwt', number)
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+
+                        }
+                    })
             })
 
 
@@ -102,9 +110,9 @@ const Register = () => {
                                 <option >Agent</option>
                                 <option >Regular User</option>
                             </select>
-                           
+
                         </div>
-                        
+
 
                         <p className="mb-2 text-red-500 text-center">{error}</p>
 

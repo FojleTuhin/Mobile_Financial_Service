@@ -6,52 +6,60 @@ import { useState } from "react";
 import useAxiosPublic from "./hooks/UseAxiosPublic";
 import Swal from "sweetalert2";
 const Login = () => {
-    
+
     const [error, setError] = useState('')
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
 
-    const handleSubmit=(e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
-       
+
         const number = e.target.number.value;
         const pin = e.target.pin.value;
-        if(!/^\d{5}$/.test(pin)){
+        if (!/^\d{5}$/.test(pin)) {
             setError("Password or number don't match")
-            return 
+            return
         }
 
-        
 
-        const newAccount={
-           
+
+        const newAccount = {
+
             number,
             pin
         }
         setError('');
-       
+
 
         console.log(newAccount);
         axiosPublic.post('login', newAccount)
-        .then(data=>{
-            console.log(data);
-            if(data.status === 200){
-             navigate('/home')
-             Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Log in Successfull",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            }
-            else{
-                setError('Password or number dont match');
-            }
-            
-        })
-       
+            .then(data => {
+                console.log(data);
+                if (data.status === 200) {
+                    navigate('/home')
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Log in Successfull",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                else {
+                    setError('Password or number dont match');
+                }
+
+                axiosPublic.post('/jwt', number)
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+
+                        }
+                    })
+
+            })
+
 
 
 
@@ -77,7 +85,7 @@ const Login = () => {
 
                         <p className="text-gray-500 mt-8">MFS PIN</p>
                         <div className="flex gap-5 items-center">
-                            <MdOutlineFiberPin className="text-green-500" /><input className="p-3 border-b-2 border-green-500 w-full" type="password" placeholder="Enter MFS PIN" name="pin"  />
+                            <MdOutlineFiberPin className="text-green-500" /><input className="p-3 border-b-2 border-green-500 w-full" type="password" placeholder="Enter MFS PIN" name="pin" />
                         </div>
 
                         <br />
