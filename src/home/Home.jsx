@@ -1,22 +1,12 @@
-import { useNavigate } from "react-router-dom";
+
 
 const Home = () => {
-
-
-    const navigate = useNavigate();
-
-
-    const handleLogout = async () => {
-        localStorage.removeItem('access-token');
-        navigate('/');
-
-    }
     return (
         <div>
-
-            <button onClick={handleLogout} className="btn">Logout</button>
+            i am from home
         </div>
     );
 };
 
 export default Home;
+

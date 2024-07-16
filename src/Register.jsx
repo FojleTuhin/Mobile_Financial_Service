@@ -39,6 +39,7 @@ const Register = () => {
         axiosPublic.post('/user', newAccount)
             .then(data => {
                 console.log(data);
+                setError(data.data.message);
                 if (data.data.insertedId) {
                     navigate('/home');
 
@@ -51,14 +52,19 @@ const Register = () => {
                     });
                 }
 
+
+
                 axiosPublic.post('/jwt', number)
                     .then(res => {
                         if (res.data.token) {
                             localStorage.setItem('access-token', res.data.token);
-
                         }
                     })
             })
+
+            setError('');
+
+
 
 
 
@@ -121,7 +127,7 @@ const Register = () => {
                         </div>
                         <div className="text-center mt-5">
                             <p> registered yet?</p>
-                            <Link to='/'><p className="font-bold">LOGIN</p></Link>
+                            <Link to='/login'><p className="font-bold">LOGIN</p></Link>
                         </div>
 
                     </form>
