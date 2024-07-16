@@ -23,6 +23,7 @@ const Register = () => {
             setError('Password must be 5 digit')
             return
         }
+        const status = 'pending'
 
 
         const newAccount = {
@@ -30,7 +31,8 @@ const Register = () => {
             email,
             number,
             pin,
-            role
+            role,
+            status
         }
         setError('');
         console.log(newAccount);
@@ -127,7 +129,7 @@ const Register = () => {
                         </div>
                         <div className="text-center mt-5">
                             <p> registered yet?</p>
-                            <Link to='/login'><p className="font-bold">LOGIN</p></Link>
+                            <Link to='/'><p className="font-bold">LOGIN</p></Link>
                         </div>
 
                     </form>
