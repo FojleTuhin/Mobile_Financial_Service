@@ -1,11 +1,16 @@
 import { MdOutlineFiberPin } from "react-icons/md";
 import logo from "../src/assets/Untitled design.png"
 import { FaPhoneFlip } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import useAxiosPublic from "./hooks/UseAxiosPublic";
+import Swal from "sweetalert2";
 const Login = () => {
     
     const [error, setError] = useState('')
+    const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
+
 
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -17,15 +22,38 @@ const Login = () => {
             return 
         }
 
+        
 
         const newAccount={
            
             number,
             pin
         }
-        setError('')
+        setError('');
+       
 
         console.log(newAccount);
+        axiosPublic.post('login', newAccount)
+        .then(data=>{
+            console.log(data);
+            if(data.status === 200){
+             navigate('/home')
+             Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Log in Successfull",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            }
+            else{
+                setError('Password or number dont match');
+            }
+            
+        })
+       
+
+
 
 
     }
