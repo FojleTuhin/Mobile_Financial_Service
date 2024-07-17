@@ -22,9 +22,6 @@ const Home = () => {
                 <Navbar />
             </div>
 
-            <div>
-                <p>{user?.number}</p>
-            </div>
 
 
 

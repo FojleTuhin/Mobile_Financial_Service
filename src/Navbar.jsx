@@ -5,7 +5,7 @@ import { AuthContext } from './provider/Provider';
 const Navbar = () => {
   
     const navigate = useNavigate();
-    const {logout} = useContext(AuthContext);
+    const {logout, user} = useContext(AuthContext);
 
 
 
@@ -16,7 +16,9 @@ const Navbar = () => {
     }
     return (
         <div>
-            <button onClick={handleLogout} className="btn border-green-500 border-2 px-10 py-2 rounded-full " >Logout</button>
+           {
+            user &&  <button onClick={handleLogout} className="btn border-green-500 border-2 px-10 py-2 rounded-full " >Logout</button>
+           }
         </div>
     );
 };
