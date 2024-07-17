@@ -26,6 +26,7 @@ const Dashboard = () => {
                                 <div className=" flex justify-between items-center">
                                     <div >
                                         <p>{userRole.name}</p>
+                                        <p>{userRole.email}</p>
                                         <p>{userRole.number}</p>
                                     </div>
                                     <div>
@@ -64,10 +65,11 @@ const Dashboard = () => {
                                 <div className=" flex justify-between items-center">
                                     <div >
                                         <p>{userRole.name}</p>
+                                        <p>{userRole.email}</p>
                                         <p>{userRole.number}</p>
                                     </div>
                                     <div>
-                                    <Link to='/home'><img title="click me to go home" className="w-[50px]" src={logo} alt="" /></Link>
+                                        <Link to='/home'><img title="click me to go home" className="w-[50px]" src={logo} alt="" /></Link>
                                     </div>
                                 </div>
 
@@ -75,7 +77,7 @@ const Dashboard = () => {
                             </div>
                             <div className="bg-white flex justify-between mt-10 p-8 rounded-t-2xl">
                                 <div className="flex flex-col items-center  text-center">
-                                    <FaMoneyCheckAlt  className="text-3xl" />
+                                    <FaMoneyCheckAlt className="text-3xl" />
                                     <p>Transaction management</p>
                                 </div>
                                 <div className="flex flex-col items-center text-center">
@@ -94,20 +96,23 @@ const Dashboard = () => {
                                 <div className=" flex justify-between items-center">
                                     <div >
                                         <p>{userRole.name}</p>
+                                        <p>{userRole.email}</p>
                                         <p>{userRole.number}</p>
                                     </div>
                                     <div>
-                                    <Link to='/home'><img title="click me to go home" className="w-[50px]" src={logo} alt="" /></Link>
+                                        <Link to='/home'><img title="click me to go home" className="w-[50px]" src={logo} alt="" /></Link>
                                     </div>
                                 </div>
 
                                 <p className="text-center mt-5 text-xl">Balance: 500</p>
                             </div>
-                            <div className="bg-white flex justify-between mt-10 p-8 rounded-t-2xl">
-                                <div className="flex flex-col items-center  text-center">
-                                    <FaUsers   className="text-3xl" />
-                                    <p>User management</p>
-                                </div>
+                            <div className="bg-white flex gap-5 justify-between mt-10 p-8 rounded-t-2xl">
+                                <Link to='/dashboard/userManagement'>
+                                    <div className="flex flex-col items-center  text-center">
+                                        <FaUsers className="text-3xl" />
+                                        <p>User management</p>
+                                    </div>
+                                </Link>
                                 <div className="flex flex-col items-center text-center">
                                     <GiTakeMyMoney className="text-3xl" />
                                     <p>Transaction monitoring</p>

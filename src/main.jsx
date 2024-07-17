@@ -13,6 +13,7 @@ import Home from './home/Home';
 import Dashboard from './dashboard/Dashboard';
 import Provider from './provider/Provider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import UserManagement from './dashboard/adminRoute/UserManagement';
 
 
 const router = createBrowserRouter([
@@ -35,8 +36,14 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: '/Dashboard',
-    element: <Dashboard></Dashboard>
+    path: '/dashboard',
+    element: <Dashboard></Dashboard>,
+    children:[
+      {
+        path:'userManagement',
+        element:<UserManagement></UserManagement>
+      }
+    ]
   }
 ]);
 
