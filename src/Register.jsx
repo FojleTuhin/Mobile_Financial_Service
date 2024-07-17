@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaPhoneFlip } from "react-icons/fa6";
 import { MdEmail, MdOutlineDriveFileRenameOutline, MdOutlineFiberPin } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "./hooks/UseAxiosPublic";
 import Swal from "sweetalert2";
+import { AuthContext } from "./provider/Provider";
 
 const Register = () => {
 
     const [error, setError] = useState('');
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
-    // const [selectedOption, setSelectedOption] = useState('');
+    const {setUser} = useContext(AuthContext);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,6 +46,7 @@ const Register = () => {
                 setError(data.data.message);
                 if (data.data.insertedId) {
                     navigate('/home');
+                   
 
                     Swal.fire({
                         position: "top-end",
@@ -60,11 +63,18 @@ const Register = () => {
                     .then(res => {
                         if (res.data.token) {
                             localStorage.setItem('access-token', res.data.token);
+                            localStorage.setItem('user',JSON.stringify(newAccount));
+                            
+                            setUser(localStorage.getItem(JSON.parse('user')));
                         }
                     })
             })
 
-            setError('');
+        setError('');
+
+
+        
+    
 
 
 
@@ -73,8 +83,8 @@ const Register = () => {
 
     }
     return (
-        <div className="flex items-center justify-center min-h-screen p-5">
-            <div className="md:w-[30%] w-full shadow-lg p-5">
+        <div className="flex items-center justify-center min-h-screen p-5 ">
+            <div className="md:w-[30%] w-full shadow-lg p-5 bg-white">
 
                 <div>
 

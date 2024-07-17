@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
-import logo from "../assets/Untitled design.png"
+import logo from "../assets/logo.png"
+import { useContext } from "react";
+import { AuthContext } from "../provider/Provider";
 
 
 const Home = () => {
+    
+    const {user} = useContext(AuthContext);
+    console.log(user);
     return (
         <div className="p-5 ">
             <div className="flex justify-between items-center">
@@ -18,7 +23,7 @@ const Home = () => {
 
             <div className="text-center mt-10">
                 <p className="font-bold text-xl">Welcome to <br />Mobile Financial Service (MFS)</p>
-                <p className="font-bold mt-8 text-xl">Go to <span className="text-green-500"><Link>dashboard</Link></span></p>
+                <p className="font-bold mt-8 text-xl">Go to <span className="text-green-500"><Link to='/dashboard'>Dashboard</Link></span></p>
             </div>
         </div>
     );

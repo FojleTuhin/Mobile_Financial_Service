@@ -1,13 +1,19 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from './provider/Provider';
 
 const Navbar = () => {
   
     const navigate = useNavigate();
+    const {setUser} = useContext(AuthContext);
+
 
 
     const handleLogout = async () => {
         localStorage.removeItem('access-token');
+        localStorage.removeItem('user');
         navigate('/');
+        setUser(null)
 
     }
     return (

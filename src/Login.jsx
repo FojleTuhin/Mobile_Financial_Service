@@ -1,15 +1,22 @@
 import { MdOutlineFiberPin } from "react-icons/md";
-import logo from "../src/assets/Untitled design.png"
+import logo from "../src/assets/logo.png"
 import { FaPhoneFlip } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useAxiosPublic from "./hooks/UseAxiosPublic";
 import Swal from "sweetalert2";
+import { AuthContext } from "./provider/Provider";
 const Login = () => {
 
+    const { user, setUser } = useContext(AuthContext);
     const [error, setError] = useState('')
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
+
+
+    const userJson = localStorage.getItem('user');
+    const userData = JSON.parse(userJson);
+    setUser(userData);
 
 
     const handleSubmit = (e) => {
@@ -45,6 +52,9 @@ const Login = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+
+
+
                 }
                 else {
                     setError('Password or number dont match');
@@ -54,6 +64,7 @@ const Login = () => {
                     .then(res => {
                         if (res.data.token) {
                             localStorage.setItem('access-token', res.data.token);
+                            localStorage.setItem('user', JSON.stringify(newAccount));
 
                         }
                     })
@@ -64,10 +75,13 @@ const Login = () => {
 
 
 
+
+
+
     }
     return (
-        <div className="flex items-center justify-center min-h-screen">
-            <div className="md:w-[30%] w-full shadow-lg p-5">
+        <div className="flex items-center justify-center min-h-screen ">
+            <div className="md:w-[30%] w-full shadow-lg p-5 bg-white">
                 <div className="flex  items-center flex-col">
                     <img className="w-[100px]" src={logo} alt="" />
                     <p className="font-bold text-2xl">Welcome</p>
@@ -80,12 +94,14 @@ const Login = () => {
                     <form onSubmit={handleSubmit}>
                         <p className="text-gray-500">ACCOUNT NUMBER</p>
                         <div className="flex gap-5 items-center">
-                            <FaPhoneFlip className="text-green-500" /><input className="p-3 border-b-2  border-green-500 w-full" type="text" name="number" placeholder="Enter your account number" />
+                            <FaPhoneFlip className="text-green-500" />
+                            <input className="p-3 border-b-2  border-green-500 w-full" required type="text" name="number" placeholder="Enter your account number" />
                         </div>
 
                         <p className="text-gray-500 mt-8">MFS PIN</p>
                         <div className="flex gap-5 items-center">
-                            <MdOutlineFiberPin className="text-green-500" /><input className="p-3 border-b-2 border-green-500 w-full" type="password" placeholder="Enter MFS PIN" name="pin" />
+                            <MdOutlineFiberPin className="text-green-500" />
+                            <input className="p-3 border-b-2 border-green-500 w-full" required type="password" placeholder="Enter MFS PIN" name="pin" />
                         </div>
 
                         <br />
