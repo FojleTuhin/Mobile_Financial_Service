@@ -8,6 +8,8 @@ const Provider = ({ children }) => {
 
 
 
+
+
     useEffect(() => {
         // Retrieve user from localStorage when the component mounts
         const userJSON = localStorage.getItem('user');
@@ -17,9 +19,22 @@ const Provider = ({ children }) => {
         }
       }, []);
 
+      
+    const logout = async () => {
+        localStorage.removeItem('access-token');
+        localStorage.removeItem('user');
+        setUser(null)
+
+    }
+
+    const saveUser = (user) => {
+        setUser(user);
+        localStorage.setItem('user', JSON.stringify(user));
+      };
+
 
     return (
-        <AuthContext.Provider value={{ user, setUser }}>
+        <AuthContext.Provider value={{ user, setUser, logout, saveUser }}>
             {children}
         </AuthContext.Provider>
     );

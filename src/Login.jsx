@@ -11,7 +11,7 @@ const Login = () => {
     const [error, setError] = useState('')
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
-    const {user} = useContext(AuthContext)
+    const {user, saveUser} = useContext(AuthContext);
     console.log(user);
 
 
@@ -64,7 +64,7 @@ const Login = () => {
                         if (res.data.token) {
                             localStorage.setItem('access-token', res.data.token);
                             localStorage.setItem('user', JSON.stringify(newAccount));
-
+                            saveUser(newAccount);
                         }
                     })
 

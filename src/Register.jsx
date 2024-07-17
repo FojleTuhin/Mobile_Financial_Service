@@ -1,15 +1,18 @@
-import {  useState } from "react";
+import { useContext, useState } from "react";
 import { FaPhoneFlip } from "react-icons/fa6";
 import { MdEmail, MdOutlineDriveFileRenameOutline, MdOutlineFiberPin } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "./hooks/UseAxiosPublic";
 import Swal from "sweetalert2";
+import { AuthContext } from "./provider/Provider";
 
 const Register = () => {
 
     const [error, setError] = useState('');
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
+    const { saveUser } = useContext(AuthContext);
+
 
 
     const handleSubmit = (e) => {
@@ -62,13 +65,13 @@ const Register = () => {
                         if (res.data.token) {
                             localStorage.setItem('access-token', res.data.token);
                             localStorage.setItem('user', JSON.stringify(newAccount));
-
+                            saveUser(newAccount);
 
                         }
                     })
 
 
-              
+
             })
 
         setError('');

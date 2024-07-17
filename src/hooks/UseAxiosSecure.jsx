@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-    baseURL: 'https://parcel-pioneer-server.vercel.app'
+    baseURL: 'http://localhost:5000'
 })
 const useAxiosSecure = () => {
     const navigate = useNavigate();
@@ -31,7 +31,7 @@ const useAxiosSecure = () => {
         // for 401 or 403 logout the user and move the user to the login
         if (status === 401 || status === 403) {
             await logOut();
-            navigate('/login');
+            navigate('/');
         }
         return Promise.reject(error);
     })

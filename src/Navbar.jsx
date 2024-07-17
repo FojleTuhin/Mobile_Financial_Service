@@ -5,15 +5,13 @@ import { AuthContext } from './provider/Provider';
 const Navbar = () => {
   
     const navigate = useNavigate();
-    const {setUser} = useContext(AuthContext);
+    const {logout} = useContext(AuthContext);
 
 
 
     const handleLogout = async () => {
-        localStorage.removeItem('access-token');
-        localStorage.removeItem('user');
+        logout();
         navigate('/');
-        setUser(null)
 
     }
     return (
