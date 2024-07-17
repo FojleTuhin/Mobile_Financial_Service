@@ -12,6 +12,7 @@ import Register from './Register';
 import Home from './home/Home';
 import Dashboard from './dashboard/Dashboard';
 import Provider from './provider/Provider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 
 const router = createBrowserRouter([
@@ -39,10 +40,18 @@ const router = createBrowserRouter([
   }
 ]);
 
+
+
+
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider>
-      <RouterProvider router={router} />
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider>
+        <RouterProvider router={router} />
+      </Provider>
+    </QueryClientProvider>
+
   </React.StrictMode>,
 )

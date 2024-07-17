@@ -1,14 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/Provider";
+import useUserRole from "../hooks/useUserRole";
 
 const Dashboard = () => {
 
-    const {user} = useContext(AuthContext);
-    console.log(user);
+    const [userRole] = useUserRole();
     return (
-        
-        <div className="text-center">
-            i am from Dashboard for {user?.number}
+        <div >
+
         </div>
     );
 };
