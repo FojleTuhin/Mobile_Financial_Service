@@ -6,9 +6,12 @@ import { AuthContext } from "../provider/Provider";
 
 
 const Home = () => {
-    
-    const {user} = useContext(AuthContext);
+
+    const { user } = useContext(AuthContext);
+
     console.log(user);
+
+    
     return (
         <div className="p-5 ">
             <div className="flex justify-between items-center">
@@ -17,6 +20,10 @@ const Home = () => {
                     <p className="font-bold text-2xl">Mobile Financial Service (MFS)</p>
                 </div>
                 <Navbar />
+            </div>
+
+            <div>
+                <p>{user?.number}</p>
             </div>
 
 

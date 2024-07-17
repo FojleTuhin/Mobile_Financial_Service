@@ -1,17 +1,15 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import { FaPhoneFlip } from "react-icons/fa6";
 import { MdEmail, MdOutlineDriveFileRenameOutline, MdOutlineFiberPin } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "./hooks/UseAxiosPublic";
 import Swal from "sweetalert2";
-import { AuthContext } from "./provider/Provider";
 
 const Register = () => {
 
     const [error, setError] = useState('');
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
-    const {setUser} = useContext(AuthContext);
 
 
     const handleSubmit = (e) => {
@@ -46,7 +44,7 @@ const Register = () => {
                 setError(data.data.message);
                 if (data.data.insertedId) {
                     navigate('/home');
-                   
+
 
                     Swal.fire({
                         position: "top-end",
@@ -63,18 +61,22 @@ const Register = () => {
                     .then(res => {
                         if (res.data.token) {
                             localStorage.setItem('access-token', res.data.token);
-                            localStorage.setItem('user',JSON.stringify(newAccount));
-                            
-                            setUser(localStorage.getItem(JSON.parse('user')));
+                            localStorage.setItem('user', JSON.stringify(newAccount));
+
+
                         }
                     })
+
+
+              
             })
 
         setError('');
 
 
-        
-    
+
+
+
 
 
 

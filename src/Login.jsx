@@ -2,21 +2,20 @@ import { MdOutlineFiberPin } from "react-icons/md";
 import logo from "../src/assets/logo.png"
 import { FaPhoneFlip } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
 import useAxiosPublic from "./hooks/UseAxiosPublic";
 import Swal from "sweetalert2";
+import { useContext, useState } from "react";
 import { AuthContext } from "./provider/Provider";
 const Login = () => {
 
-    const { user, setUser } = useContext(AuthContext);
     const [error, setError] = useState('')
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
+    const {user} = useContext(AuthContext)
+    console.log(user);
 
 
-    const userJson = localStorage.getItem('user');
-    const userData = JSON.parse(userJson);
-    setUser(userData);
+
 
 
     const handleSubmit = (e) => {
@@ -68,6 +67,7 @@ const Login = () => {
 
                         }
                     })
+
 
             })
 
