@@ -14,6 +14,7 @@ import Dashboard from './dashboard/Dashboard';
 import Provider from './provider/Provider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import UserManagement from './dashboard/adminRoute/UserManagement';
+import DashboardHome from './dashboard/DashboardHome';
 
 
 const router = createBrowserRouter([
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard></Dashboard>,
     children:[
+      {
+        path:'/dashboard',
+        element:<DashboardHome></DashboardHome>
+
+      },
       {
         path:'userManagement',
         element:<UserManagement></UserManagement>
