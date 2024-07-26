@@ -6,13 +6,15 @@ import useAxiosPublic from "./hooks/UseAxiosPublic";
 import Swal from "sweetalert2";
 import { useContext, useState } from "react";
 import { AuthContext } from "./provider/Provider";
+import useUserRole from "./hooks/useUserRole";
 const Login = () => {
 
     const [error, setError] = useState('')
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
-    const {user, saveUser} = useContext(AuthContext);
-    console.log(user);
+    const { user, saveUser } = useContext(AuthContext);
+    const [isLoading] = useUserRole();
+
 
 
 
@@ -79,6 +81,14 @@ const Login = () => {
 
 
     }
+
+
+
+
+
+
+
+
     return (
         <div className="flex items-center justify-center min-h-screen ">
             <div className="md:w-[30%] w-full shadow-lg p-5 bg-white">
@@ -108,7 +118,12 @@ const Login = () => {
                         <p className="mb-2 text-red-500 text-center">{error}</p>
 
                         <div className="flex justify-center">
-                            <button className="btn border-green-500 border-2 px-10 py-2 rounded-full " type="submit">LOGIN</button>
+                            {
+
+                                <button className="btn border-green-500 border-2 px-10 py-2 rounded-full " type="submit">LOGIN</button>
+
+
+                            }
                         </div>
                         <div className="text-center mt-5">
                             <p>Not registered yet?</p>
