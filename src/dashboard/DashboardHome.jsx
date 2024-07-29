@@ -30,24 +30,32 @@ const DashboardHome = () => {
                                 <p className="text-center mt-5 text-xl">Balance: {userRole?.balance}</p>
                             </div>
                             <div className="bg-white flex justify-between mt-10 p-8 rounded-t-2xl">
-                                <div className="flex flex-col items-center">
-                                    <GiPayMoney className="text-3xl" />
-                                    <p>Send Money</p>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <GiTakeMyMoney className="text-3xl" />
-                                    <p>Cash out</p>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <GiReceiveMoney className="text-3xl" />
-                                    <p>Cash in</p>
-                                </div>
+                                <Link to='/dashboard/sendMoney'>
+                                    <div className="flex flex-col items-center">
+                                        <GiPayMoney className="text-3xl" />
+                                        <p>Send Money</p>
+                                    </div>
+                                </Link>
+                                <Link>
+                                    <div className="flex flex-col items-center">
+                                        <GiTakeMyMoney className="text-3xl" />
+                                        <p>Cash out</p>
+                                    </div>
+                                </Link>
+                                <Link>
+                                    <div className="flex flex-col items-center">
+                                        <GiReceiveMoney className="text-3xl" />
+                                        <p>Cash in</p>
+                                    </div>
+                                </Link>
                             </div>
                             <div className="flex justify-center bg-white pb-8">
-                                <div className="flex flex-col items-center">
-                                    <GiMoneyStack className="text-3xl" />
-                                    <p>Transaction</p>
-                                </div>
+                                <Link>
+                                    <div className="flex flex-col items-center">
+                                        <GiMoneyStack className="text-3xl" />
+                                        <p>Transaction</p>
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     }
@@ -97,7 +105,7 @@ const DashboardHome = () => {
                                     </div>
                                 </div>
 
-                               
+
                             </div>
                             <div className="bg-white flex gap-5 justify-between mt-10 p-8 rounded-t-2xl">
 

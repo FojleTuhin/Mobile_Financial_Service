@@ -15,6 +15,7 @@ import Provider from './provider/Provider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import UserManagement from './dashboard/adminRoute/UserManagement';
 import DashboardHome from './dashboard/DashboardHome';
+import SendMoney from './dashboard/regularUser/SendMoney';
 
 
 const router = createBrowserRouter([
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path:'userManagement',
         element:<UserManagement></UserManagement>
+      },
+      {
+        path:'sendMoney',
+        element:<SendMoney></SendMoney>
       }
     ]
   }
