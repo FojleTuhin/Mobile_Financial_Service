@@ -8,9 +8,16 @@ const UserManagement = () => {
     const axiosPublic = useAxiosPublic();
     const [searchText, setSearchtext]= useState('');
 
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const searchText = e.target.searchText.value;
+        setSearchtext(searchText);
+        // console.log(searchText);
+        
+    }
 
     const { data: allUser = [], refetch, isLoading } = useQuery({
-        queryKey: ['allUser'],
+        queryKey: ['allUser', searchText],
         queryFn: async () => {
             const res = await axiosPublic.get(`/allUser?search=${searchText}`);
             return res.data;
@@ -46,13 +53,7 @@ const UserManagement = () => {
         refetch();
     }
 
-    const handleSearch = (e) => {
-        e.preventDefault();
-        const searchText = e.target.searchText.value;
-        setSearchtext(searchText);
 
-        
-    }
 
 
 
