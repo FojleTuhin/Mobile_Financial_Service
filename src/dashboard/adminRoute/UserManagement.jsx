@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/UseAxiosPublic";
-import { data } from "autoprefixer";
-// import useAxiosSecure from "../../hooks/UseAxiosSecure";
+import { useState } from "react";
 
 const UserManagement = () => {
 
 
     const axiosPublic = useAxiosPublic();
-    // const axiosSecure = useAxiosSecure();
+    const [searchText, setSearchtext]= useState('');
+
 
     const { data: allUser = [], refetch, isLoading } = useQuery({
         queryKey: ['allUser'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/allUser`);
+            const res = await axiosPublic.get(`/allUser?search=${searchText}`);
             return res.data;
         }
     })
@@ -32,7 +32,7 @@ const UserManagement = () => {
     }
 
     const handleActive = async (id) => {
-        console.log("active", id);
+        // console.log("active", id);
         await axiosPublic.patch(`/activeUser/${id}`)
             .then(data => console.log(data));
         refetch();
@@ -40,10 +40,18 @@ const UserManagement = () => {
     }
 
     const handleBlock = async (id) => {
-        console.log("block");
+        // console.log("block");
         await axiosPublic.patch(`/blockUser/${id}`)
             .then(data => console.log(data));
         refetch();
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const searchText = e.target.searchText.value;
+        setSearchtext(searchText);
+
+        
     }
 
 
@@ -54,6 +62,14 @@ const UserManagement = () => {
 
             <div className="font-bold text-3xl text-center py-5">
                 User Management
+            </div>
+
+            <div className="flex gap-4 justify-end mb-10">
+                <form onSubmit={handleSearch} className="flex gap-4">
+                    <input type="text" placeholder="Search by name" name="searchText" className=" border-2 px-4 py-2 rounded-xl" />
+                    <button className="border-2 px-4 py-2 rounded-xl">Search</button>
+                </form>
+
             </div>
 
 

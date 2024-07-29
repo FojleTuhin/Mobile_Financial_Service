@@ -27,7 +27,7 @@ const DashboardHome = () => {
                                     </div>
                                 </div>
 
-                                <p className="text-center mt-5 text-xl">Balance: 500</p>
+                                <p className="text-center mt-5 text-xl">Balance: {userRole?.balance}</p>
                             </div>
                             <div className="bg-white flex justify-between mt-10 p-8 rounded-t-2xl">
                                 <div className="flex flex-col items-center">
@@ -66,7 +66,7 @@ const DashboardHome = () => {
                                     </div>
                                 </div>
 
-                                <p className="text-center mt-5 text-xl">Balance: 500</p>
+                                <p className="text-center mt-5 text-xl">Balance: {userRole?.balance}</p>
                             </div>
                             <div className="bg-white flex justify-between mt-10 p-8 rounded-t-2xl">
                                 <div className="flex flex-col items-center  text-center">
@@ -97,7 +97,7 @@ const DashboardHome = () => {
                                     </div>
                                 </div>
 
-                                <p className="text-center mt-5 text-xl">Balance: 500</p>
+                               
                             </div>
                             <div className="bg-white flex gap-5 justify-between mt-10 p-8 rounded-t-2xl">
 
