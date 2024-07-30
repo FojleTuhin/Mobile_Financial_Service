@@ -26,7 +26,7 @@ const Login = () => {
         const number = e.target.number.value;
         const pin = e.target.pin.value;
         if (!/^\d{5}$/.test(pin)) {
-            setError("Password or number don't match")
+            setError("Password must be 5 digit");
             return
         }
 
@@ -58,7 +58,8 @@ const Login = () => {
 
                 }
                 else {
-                    setError('Password or number dont match');
+                    // setError('Password or number dont match');
+                    setError(data.response.data.message);
                 }
 
                 axiosPublic.post('/jwt', number)
@@ -72,6 +73,10 @@ const Login = () => {
 
 
             })
+
+            .catch(error => {
+                setError(error.response.data.message);
+            });
 
 
 
