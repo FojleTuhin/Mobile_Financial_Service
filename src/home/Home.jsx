@@ -34,8 +34,12 @@ const Home = () => {
                     userRole.status === 'active' ?
                         <p className="font-bold mt-8 text-xl">Go to <span className="text-green-500"><Link to='/dashboard'>Dashboard</Link></span></p>
                         :
-                        <p className={`font-bold mt-8 text-xl`}>Status:
-                            <span className={`${userRole.status === 'block' && "text-red-600"}`}> {userRole.status}</span> </p>
+                        <div>
+                            <p className="mt-8">{userRole.number}</p>
+                            <p className={`font-bold text-xl`}>Status:
+                                <span className={`${userRole.status === 'block' && "text-red-600"}`}> {userRole.status}</span>
+                            </p>
+                        </div>
                 }
                 {
 

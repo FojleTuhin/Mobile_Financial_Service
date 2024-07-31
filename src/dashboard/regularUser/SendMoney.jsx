@@ -1,5 +1,8 @@
+import useUserRole from "../../hooks/useUserRole";
 
 const SendMoney = () => {
+
+    const [userRole] = useUserRole();
 
     const handleSendMoney = (e) =>{
         e.preventDefault();
@@ -7,27 +10,28 @@ const SendMoney = () => {
 
     }
     return (
-        <div>
-            i am from send Money
+        <div className="md:w-[30%] w-full shadow-lg p-5 mx-auto">
+            
 
 
             <form onSubmit={handleSendMoney}>
-                <input type="text" name="number" id="number" placeholder="Enter number"/>
+                <p>Enter number</p>
+                <input type="text" name="number" id="number" placeholder="Enter number" className="w-full"/>
 
                 <hr />
 
                 <p>Amount</p>
 
-                <input type="number" name="money" placeholder="0" />
+                <input type="number" name="money" placeholder="0" className="w-full"/>
 
-                <p>Available Balance: </p>
-
-
+                <p>Available Balance: {userRole.balance}</p>
 
 
-                <input type="password" name="password" />
+
+
+                <input type="password" name="password" className="w-full"/>
                 <br />
-                <button type="submit">Proceed</button>
+                <button type="submit" className="w-full">Proceed</button>
 
             </form>
         </div>
