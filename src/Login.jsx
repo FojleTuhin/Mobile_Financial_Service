@@ -13,7 +13,6 @@ const Login = () => {
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const { user, saveUser } = useContext(AuthContext);
-    const [isLoading] = useUserRole();
 
 
 
