@@ -29,7 +29,7 @@ const DashboardHome = () => {
 
                                 <p className="text-center mt-5 text-xl">Balance: {userRole?.balance}</p>
                             </div>
-                            <div className="bg-white flex justify-between mt-10 p-8 rounded-t-2xl">
+                            <div className="bg-white flex justify-between mt-10 p-8 gap-5 rounded-t-2xl">
                                 <Link to='/dashboard/sendMoney'>
                                     <div className="flex flex-col items-center">
                                         <GiPayMoney className="text-3xl" />

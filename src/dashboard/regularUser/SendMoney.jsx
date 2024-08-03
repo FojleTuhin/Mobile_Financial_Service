@@ -16,22 +16,22 @@ const SendMoney = () => {
 
             <form onSubmit={handleSendMoney}>
                 <p>Enter number</p>
-                <input type="text" name="number" id="number" placeholder="Enter number" className="w-full"/>
+                <input type="text" name="number" id="number" placeholder="Enter number" className="w-full px-5 py-2"/>
 
                 <hr />
 
                 <p>Amount</p>
 
-                <input type="number" name="money" placeholder="0" className="w-full"/>
+                <input type="text" name="money" placeholder="00000" className="w-full px-32 py-10"/>
 
-                <p>Available Balance: {userRole.balance}</p>
-
-
+                <p className="text-center mt-2"><span className="text-gray-600">Available Balance:</span> {userRole.balance}</p>
 
 
-                <input type="password" name="password" className="w-full"/>
+
+
+                <input type="password" name="password" placeholder="Enter your password" className="w-full px-5 py-2 mt-2"/>
                 <br />
-                <button type="submit" className="w-full">Proceed</button>
+                <button type="submit" className="w-full btn mt-10 bg-green-500 text-white font-bold text-xl">Proceed</button>
 
             </form>
         </div>
