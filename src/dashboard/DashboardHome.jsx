@@ -42,7 +42,7 @@ const DashboardHome = () => {
                                         <p>Cash out</p>
                                     </div>
                                 </Link>
-                                <Link>
+                                <Link to='/dashboard/cashIn'>
                                     <div className="flex flex-col items-center">
                                         <GiReceiveMoney className="text-3xl" />
                                         <p>Cash in</p>

@@ -3,7 +3,7 @@ import useUserRole from "../../hooks/useUserRole";
 import useAxiosPublic from "../../hooks/UseAxiosPublic";
 import { useNavigate } from "react-router-dom";
 
-const CashOut = () => {
+const CashIn = () => {
 
     const [userRole, refetch] = useUserRole();
 
@@ -11,35 +11,26 @@ const CashOut = () => {
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
-    const handleCashOut = (e) => {
+    const handleCashIn = (e) => {
         e.preventDefault();
-        const sender = userRole.number;
-        const receiver = e.target.number.value;
+        const receiver = userRole.number;
+        const agent = e.target.number.value;
         let money = e.target.money.value;
         money = parseInt(money);
-        money = (money / 100) * 1.5 + money;
-
-
-
-        if (money > userRole.balance) {
-            setError('Insufficient balance');
-            return
-        }
-        setError('');
 
 
         const password = e.target.password.value;
-        const cashOut = {
-            sender,
+        const cashIn = {
             receiver,
+            agent,
             money,
             password
         }
 
 
-        console.log(cashOut);
+        console.log(cashIn);
 
-        axiosPublic.post('/cashOut', cashOut)
+        axiosPublic.post('/cashIn', cashIn)
             .then(data => {
                 console.log(data);
                 if(data.status === 200){
@@ -61,7 +52,7 @@ const CashOut = () => {
 
 
 
-            <form onSubmit={handleCashOut}>
+            <form onSubmit={handleCashIn}>
                 <p>Enter number</p>
                 <input type="text" name="number" id="number" required placeholder="Enter number" className="w-full px-5 py-2" />
 
@@ -86,4 +77,4 @@ const CashOut = () => {
     );
 };
 
-export default CashOut;
+export default CashIn;
