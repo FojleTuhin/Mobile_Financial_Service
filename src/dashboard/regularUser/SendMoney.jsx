@@ -17,6 +17,7 @@ const SendMoney = () => {
         const receiver = e.target.number.value;
         let money = e.target.money.value;
         money = parseInt(money);
+        
 
 
 
@@ -48,7 +49,6 @@ const SendMoney = () => {
         }
 
 
-        console.log(sendMoney);
 
 
         axiosPublic.post('/sendMoney', sendMoney)
