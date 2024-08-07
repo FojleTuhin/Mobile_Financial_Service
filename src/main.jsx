@@ -17,6 +17,7 @@ import UserManagement from './dashboard/adminRoute/UserManagement';
 import DashboardHome from './dashboard/DashboardHome';
 import SendMoney from './dashboard/regularUser/SendMoney';
 import Transections from './dashboard/agent/Transections';
+import CashOut from './dashboard/regularUser/CashOut';
 
 
 const router = createBrowserRouter([
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path:'sendMoney',
         element:<SendMoney></SendMoney>
+      },
+      {
+        path:'cashOut',
+        element:<CashOut></CashOut>
       },
       {
         path:'transections',

@@ -36,7 +36,7 @@ const DashboardHome = () => {
                                         <p>Send Money</p>
                                     </div>
                                 </Link>
-                                <Link>
+                                <Link to='/dashboard/cashOut'>
                                     <div className="flex flex-col items-center">
                                         <GiTakeMyMoney className="text-3xl" />
                                         <p>Cash out</p>
