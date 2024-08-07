@@ -1,13 +1,15 @@
 import { useState } from "react";
 import useUserRole from "../../hooks/useUserRole";
 import useAxiosPublic from "../../hooks/UseAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 const SendMoney = () => {
 
-    const [userRole] = useUserRole();
+    const [userRole, refetch] = useUserRole();
 
     const [error, setError] = useState('')
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
     const handleSendMoney = (e) => {
         e.preventDefault();
@@ -20,7 +22,7 @@ const SendMoney = () => {
 
 
 
-        if(money <50){
+        if (money < 50) {
             setError('Minimum transection 50 tk')
             return
         }
@@ -48,15 +50,22 @@ const SendMoney = () => {
 
         console.log(sendMoney);
 
-        try{
-            axiosPublic.post('/sendMoney', sendMoney)
-            .then(data=>{
+
+        axiosPublic.post('/sendMoney', sendMoney)
+            .then(data => {
                 console.log(data);
+                if(data.status === 200){
+                    navigate('/dashboard')
+                    refetch();
+                }
+            })
+            .catch(err=>{
+                console.log(err.response.data.message);
+
+                setError(err.response.data.message)
             })
 
-        }catch(error){
-            console.log(error);
-        }
+            e.target.reset();
 
     }
     return (

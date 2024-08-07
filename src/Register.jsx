@@ -12,6 +12,7 @@ const Register = () => {
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const { saveUser } = useContext(AuthContext);
+    
 
 
 
@@ -22,11 +23,14 @@ const Register = () => {
         const number = e.target.number.value;
         const role = e.target.role.value;
         const pin = e.target.pin.value;
+
         if (!/^\d{5}$/.test(pin)) {
             setError('Password must be 5 digit')
             return
         }
-        const status = 'pending'
+
+        const status = 'pending';
+
 
 
         const newAccount = {
@@ -130,8 +134,9 @@ const Register = () => {
                         <div className="flex items-center gap-5 mb-12">
                             <p className="text-gray-500">ROLE</p>
                             <select name="role" className="p-2 border-b-2 border-green-500">
-                                <option >Agent</option>
                                 <option >Regular User</option>
+                                <option >Agent</option>
+
                             </select>
 
                         </div>
