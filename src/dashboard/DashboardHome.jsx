@@ -118,7 +118,7 @@ const DashboardHome = () => {
                                     </div>
                                 </Link>
 
-                                <Link to='/dashboard/transections'>
+                                <Link to='/dashboard/allTransectionHistory'>
                                     <div className="flex flex-col items-center text-center">
                                         <GiTakeMyMoney className="text-3xl" />
                                         <p>Transaction monitoring</p>

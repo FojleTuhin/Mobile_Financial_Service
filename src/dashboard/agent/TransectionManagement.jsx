@@ -1,13 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/UseAxiosPublic";
 import useUserRole from "../../hooks/useUserRole";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const TransectionManagement = () => {
 
     const axiosPublic = useAxiosPublic();
     const [userRole] = useUserRole();
-
     const agentNumber = userRole.number;
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     // console.log(agentNumber);
 
@@ -26,9 +29,11 @@ const TransectionManagement = () => {
             .then(data => {
                 if(data.status === 200){
                     refetch();
+                    navigate('/dashboard')
                 }
             }).catch(err => {
-                console.log(err);
+                // console.log(err);
+                setError(err.response.data.message);
             })
     }
 
@@ -83,6 +88,8 @@ const TransectionManagement = () => {
 
                     </tbody>
                 </table>
+
+                <p className="text-center mt-10 text-red-500">{error}</p>
             </div>
         </div>
     );
