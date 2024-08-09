@@ -50,7 +50,7 @@ const DashboardHome = () => {
                                 </Link>
                             </div>
                             <div className="flex justify-center bg-white pb-8">
-                                <Link >
+                                <Link to='/dashboard/transectionForUser'>
                                     <div className="flex flex-col items-center">
                                         <GiMoneyStack className="text-3xl" />
                                         <p>Transaction</p>

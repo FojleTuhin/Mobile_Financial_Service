@@ -21,6 +21,7 @@ import CashOut from './dashboard/regularUser/CashOut';
 import CashIn from './dashboard/regularUser/CashIn';
 import TransectionManagement from './dashboard/agent/TransectionManagement';
 import AllTransections from './dashboard/adminRoute/AllTransections';
+import TransectionsForUser from './dashboard/regularUser/TransectionsForUser';
 
 
 const router = createBrowserRouter([
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path:'cashIn',
         element:<CashIn></CashIn>
+      },
+      {
+        path:'transectionForUser',
+        element:<TransectionsForUser></TransectionsForUser>
       },
 
       //Agent routes
