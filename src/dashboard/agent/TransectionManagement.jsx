@@ -9,15 +9,28 @@ const TransectionManagement = () => {
 
     const agentNumber = userRole.number;
 
-    console.log(agentNumber);
+    // console.log(agentNumber);
 
-    const { data: cashInRequest = [], isLoading } = useQuery({
+    const { data: cashInRequest = [], isLoading, refetch } = useQuery({
         queryKey: ['cashInRequest'],
         queryFn: async () => {
             const res = await axiosPublic.get(`/cashInRequest/${agentNumber}`);
             return res.data;
         }
     })
+
+
+    //patch confirm for cash in request
+    const handleConfirmCashin = async (id) => {
+        axiosPublic.patch(`/ConfirmCashIn/${id}`)
+            .then(data => {
+                if(data.status === 200){
+                    refetch();
+                }
+            }).catch(err => {
+                console.log(err);
+            })
+    }
 
     if (isLoading) {
         return (
@@ -33,8 +46,8 @@ const TransectionManagement = () => {
 
     }
 
-    if(cashInRequest.length <1){
-        return(
+    if (cashInRequest.length < 1) {
+        return (
             <p className="text-center font-semibold text-2xl">No cash in request come</p>
         )
     }
@@ -61,7 +74,7 @@ const TransectionManagement = () => {
                                     <td>{transection.receiver}</td>
                                     <td>{transection.money}</td>
                                     <td><span className="rounded-full font-bold text-white px-4 py-1 bg-pink-500">{transection.status}</span></td>
-                                    <td><span className="rounded-full font-bold text-white px-4 py-1 bg-green-500"><button>Confirm</button></span></td>
+                                    <td><span className="rounded-full font-bold text-white px-4 py-1 bg-green-500"><button onClick={() => handleConfirmCashin(transection._id)}>Confirm</button></span></td>
                                 </tr>
                             )
                         }
