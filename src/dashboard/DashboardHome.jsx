@@ -50,7 +50,7 @@ const DashboardHome = () => {
                                 </Link>
                             </div>
                             <div className="flex justify-center bg-white pb-8">
-                                <Link>
+                                <Link >
                                     <div className="flex flex-col items-center">
                                         <GiMoneyStack className="text-3xl" />
                                         <p>Transaction</p>
@@ -77,10 +77,12 @@ const DashboardHome = () => {
                                 <p className="text-center mt-5 text-xl">Balance: {userRole?.balance}</p>
                             </div>
                             <div className="bg-white flex justify-between mt-10 p-8 rounded-t-2xl">
-                                <div className="flex flex-col items-center  text-center">
-                                    <FaMoneyCheckAlt className="text-3xl" />
-                                    <p>Transaction management</p>
-                                </div>
+                                <Link to='/dashboard/transectionManagement'>
+                                    <div className="flex flex-col items-center  text-center">
+                                        <FaMoneyCheckAlt className="text-3xl" />
+                                        <p>Transaction management</p>
+                                    </div>
+                                </Link>
                                 <div className="flex flex-col items-center text-center">
                                     <GiTakeMyMoney className="text-3xl" />
                                     <p>Transaction history</p>
