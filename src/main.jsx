@@ -75,14 +75,15 @@ const router = createBrowserRouter([
         path:'cashIn',
         element:<CashIn></CashIn>
       },
-      {
-        path:'transections',
-        element:<Transections></Transections>
-      },
+
       //Agent routes
       {
         path:'transectionManagement',
         element:<TransectionManagement></TransectionManagement>
+      },
+      {
+        path:'transections',
+        element:<Transections></Transections>
       }
     ]
   }

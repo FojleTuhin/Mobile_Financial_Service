@@ -83,10 +83,12 @@ const DashboardHome = () => {
                                         <p>Transaction management</p>
                                     </div>
                                 </Link>
-                                <div className="flex flex-col items-center text-center">
-                                    <GiTakeMyMoney className="text-3xl" />
-                                    <p>Transaction history</p>
-                                </div>
+                                <Link to='/dashboard/transections'>
+                                    <div className="flex flex-col items-center text-center">
+                                        <GiTakeMyMoney className="text-3xl" />
+                                        <p>Transaction history</p>
+                                    </div>
+                                </Link>
 
                             </div>
 
