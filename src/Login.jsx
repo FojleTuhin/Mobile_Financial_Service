@@ -58,7 +58,8 @@ const Login = () => {
                 }
                 else {
                     // setError('Password or number dont match');
-                    setError(data.response.data.message);
+                    // setError(data.response.data.message);
+                    console.log('something wrong');
                 }
 
                 axiosPublic.post('/jwt', number)
@@ -74,8 +75,8 @@ const Login = () => {
             })
 
             .catch(error => {
-                setError(error.response.data.message);
-                // console.log(error);
+                // setError(error.response.data.message);
+                console.log(error);
             });
 
 
