@@ -31,6 +31,8 @@ const Transections = () => {
 
 
 
+
+
     return (
         <div className="px-4 md:px-[70px] lg:px-[100px] text-center bg-white min-h-screen py-5">
             <Tabs>
