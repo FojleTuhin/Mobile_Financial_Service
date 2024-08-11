@@ -19,6 +19,7 @@ const UserManagement = () => {
     const { data: allUser = [], refetch, isLoading } = useQuery({
         queryKey: ['allUser', searchText],
         queryFn: async () => {
+            // const res = await axiosPublic.get(`/allUser`);
             const res = await axiosPublic.get(`/allUser?search=${searchText}`);
             return res.data;
         }
