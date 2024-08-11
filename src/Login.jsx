@@ -6,13 +6,12 @@ import useAxiosPublic from "./hooks/UseAxiosPublic";
 import Swal from "sweetalert2";
 import { useContext, useState } from "react";
 import { AuthContext } from "./provider/Provider";
-import useUserRole from "./hooks/useUserRole";
 const Login = () => {
 
     const [error, setError] = useState('')
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
-    const { user, saveUser } = useContext(AuthContext);
+    const { saveUser } = useContext(AuthContext);
 
 
 
@@ -40,7 +39,7 @@ const Login = () => {
 
 
         console.log(newAccount);
-        axiosPublic.post('login', newAccount)
+        axiosPublic.post('/login', newAccount)
             .then(data => {
                 console.log(data);
                 if (data.status === 200) {
