@@ -52,12 +52,9 @@ const Login = () => {
                         timer: 1500
                     });
 
-
-
                 }
                 else {
-                    // setError('Password or number dont match');
-                    // setError(data.response.data.message);
+                    setError(data.response.data.message);
                     console.log('something wrong');
                 }
 
@@ -69,8 +66,6 @@ const Login = () => {
                             saveUser(newAccount);
                         }
                     })
-
-
             })
 
             .catch(error => {
