@@ -69,7 +69,7 @@ const Login = () => {
             })
 
             .catch(error => {
-                // setError(error.response.data.message);
+                setError(error.response.data.message);
                 console.log(error);
             });
 
@@ -119,10 +119,7 @@ const Login = () => {
 
                         <div className="flex justify-center">
                             {
-
                                 <button className="btn border-green-500 border-2 px-10 py-2 rounded-full " type="submit">LOGIN</button>
-
-
                             }
                         </div>
                         <div className="text-center mt-5">
